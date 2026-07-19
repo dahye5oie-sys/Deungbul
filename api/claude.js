@@ -98,7 +98,7 @@ module.exports = async function handler(req, res) {
   try {
     const result = await callAnthropicWithRetry(apiKey, {
       // 모델과 max_tokens는 서버에서 고정합니다. 클라이언트가 임의로 바꿀 수 없게 하기 위함입니다.
-      model: 'claude-sonnet-4-6',
+      model: 'claude-sonnet-5',
       max_tokens: 1400,
       messages
     });
@@ -106,7 +106,7 @@ module.exports = async function handler(req, res) {
     if (!result.ok) {
       console.error('Anthropic API 오류 (재시도 후에도 실패):', result.status, result.errText);
       if (result.status === 429 || result.status === 529) {
-        res.status(429).json({ error: '지금 이용자가 많아 잠시 지연되고 있습니다. 잠시 후 다시 시도해 주세요.' });
+        res.status(429).json({ error: '잠시 후 다시 시도해 주세요.' });
       } else {
         res.status(502).json({ error: 'AI 서비스 호출에 실패했습니다.' });
       }
