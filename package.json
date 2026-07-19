@@ -1,9 +1,0 @@
-{
-  "name": "deungbul",
-  "version": "1.0.0",
-  "description": "등불 - 성경 기반 상담 조언 웹앱",
-  "private": true,
-  "engines": {
-    "node": ">=18"
-  }
-}
